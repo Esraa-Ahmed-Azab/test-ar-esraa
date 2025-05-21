@@ -110,7 +110,7 @@ export class ArViewerComponent {
     loader.load("assets/Smartphone_Display_0517224312_texture.glb", (gltf) => {
       const model = gltf.scene;
       model.scale.set(0.5, 0.5, 0.5); // Adjust size if needed
-      anchor.group.add(model);
+      scene.add(model);
     });
 
     await mindarThree.start();
@@ -118,5 +118,13 @@ export class ArViewerComponent {
     renderer.setAnimationLoop(() => {
       renderer.render(scene, camera);
     });
+
+    anchor.onTargetFound = () => {
+      console.log("✅ Image target found!");
+    };
+    
+    anchor.onTargetLost = () => {
+      console.log("🔁 Image target lost!");
+    };
   }
 }
