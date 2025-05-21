@@ -21,7 +21,7 @@ export class ArViewerComponent {
   modelUrl = '';
   constructor(private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
-      this.modelUrl = '../../assets/Smartphone_Display_0517224312_texture.glb';
+      this.modelUrl = '../../assets/Smartphone_Display_0521123212_texture.usdz';
     });
   }
 
