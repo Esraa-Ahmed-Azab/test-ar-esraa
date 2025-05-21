@@ -101,8 +101,6 @@ export class ArViewerComponent {
     const mindarThree = new MindARThree({
       container: document.querySelector("#ar-container"),
       imageTargetSrc: "assets/targets.mind",
-      uiLoading: false,
-      uiScanning: false
     });
 
     const { renderer, scene, camera } = mindarThree;
@@ -110,9 +108,9 @@ export class ArViewerComponent {
 
     const loader = new GLTFLoader();
     loader.load("assets/Smartphone_Display_0517224312_texture.glb", (gltf) => {
-      // const model = gltf.scene;
-      // model.scale.set(0.5, 0.5, 0.5); // Adjust size if needed
-      anchor.group.add(gltf.scene);
+      const model = gltf.scene;
+      model.scale.set(0.5, 0.5, 0.5); // Adjust size if needed
+      anchor.group.add(model);
     });
 
     await mindarThree.start();
