@@ -88,43 +88,43 @@ export class ArViewerComponent {
   //   // };
   // }
 
-  async ngAfterViewInit() {
-    await new Promise(resolve => setTimeout(resolve, 100)); // small delay
+  // async ngAfterViewInit() {
+  //   await new Promise(resolve => setTimeout(resolve, 100)); // small delay
 
-    const MINDAR = (window as any).MINDAR;
-    if (!MINDAR || !MINDAR.IMAGE) {
-      console.error('MindAR is not loaded');
-      return;
-    }
+  //   const MINDAR = (window as any).MINDAR;
+  //   if (!MINDAR || !MINDAR.IMAGE) {
+  //     console.error('MindAR is not loaded');
+  //     return;
+  //   }
 
-    const MindARThree = MINDAR.IMAGE.MindARThree;
-    const mindarThree = new MindARThree({
-      container: document.querySelector("#ar-container"),
-      imageTargetSrc: "assets/targets.mind",
-    });
+  //   const MindARThree = MINDAR.IMAGE.MindARThree;
+  //   const mindarThree = new MindARThree({
+  //     container: document.querySelector("#ar-container"),
+  //     imageTargetSrc: "assets/targets.mind",
+  //   });
 
-    const { renderer, scene, camera } = mindarThree;
-    const anchor = mindarThree.addAnchor(0);
+  //   const { renderer, scene, camera } = mindarThree;
+  //   const anchor = mindarThree.addAnchor(0);
 
-    const loader = new GLTFLoader();
-    loader.load("assets/Smartphone_Display_0517224312_texture.glb", (gltf) => {
-      const model = gltf.scene;
-      model.scale.set(0.5, 0.5, 0.5); // Adjust size if needed
-      anchor.group.add(model);
-    });
+  //   const loader = new GLTFLoader();
+  //   loader.load("assets/Smartphone_Display_0517224312_texture.glb", (gltf) => {
+  //     const model = gltf.scene;
+  //     model.scale.set(0.5, 0.5, 0.5); // Adjust size if needed
+  //     anchor.group.add(model);
+  //   });
 
-    await mindarThree.start();
+  //   await mindarThree.start();
 
-    renderer.setAnimationLoop(() => {
-      renderer.render(scene, camera);
-    });
+  //   renderer.setAnimationLoop(() => {
+  //     renderer.render(scene, camera);
+  //   });
 
-    anchor.onTargetFound = () => {
-      console.log("✅ Image target found!");
-    };
+  //   anchor.onTargetFound = () => {
+  //     console.log("✅ Image target found!");
+  //   };
     
-    anchor.onTargetLost = () => {
-      console.log("🔁 Image target lost!");
-    };
-  }
+  //   anchor.onTargetLost = () => {
+  //     console.log("🔁 Image target lost!");
+  //   };
+  // }
 }

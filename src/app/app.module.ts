@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 // 👇 Your root standalone component
@@ -17,6 +17,7 @@ const routes: Routes = [
   ];
 
 @NgModule({
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [AppComponent, QrCodeComponent],
   imports: [
     BrowserModule,
