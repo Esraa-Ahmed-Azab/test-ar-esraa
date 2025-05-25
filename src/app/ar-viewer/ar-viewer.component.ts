@@ -31,10 +31,11 @@ export class ArViewerComponent {
   }
 
   openAR() {
-    const button = document.getElementById('enterAR');
-    if (button) button.style.display = 'none';
+    const glbUrl = encodeURIComponent('https://test-ar-esraa.vercel.app/assets/Smartphone_Display_0517224312_texture.glb'); // Must be public HTTPS
+  const title = encodeURIComponent('My AR Model');
 
-    // Must be triggered by user gesture
-    (this.modelViewer.nativeElement as any).activateAR();
+  const sceneViewerUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${glbUrl}&mode=ar_preferred&title=${title}#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${glbUrl};end;`;
+
+  window.location.href = sceneViewerUrl;
   }
 }
