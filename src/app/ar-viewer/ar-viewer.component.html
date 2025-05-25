@@ -1,5 +1,5 @@
 Modelviewer Working Successfully
-<model-viewer
+<!-- <model-viewer
   src="{{ modelUrl }}"
   ios-src="{{ iosURL }}"
   ar
@@ -7,6 +7,25 @@ Modelviewer Working Successfully
   auto-rotate
   camera-controls
   style="width: 80%; height: 80vh;">
+</model-viewer> -->
+
+<button
+  id="enterAR"
+  (click)="openAR()"
+  style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;">
+  Tap to enter AR
+</button>
+
+<!-- Model Viewer -->
+<model-viewer
+  #modelViewer
+  [attr.src]="modelUrl"
+  [attr.ios-src]="iosUrl"
+  ar
+  ar-modes="quick-look webxr scene-viewer"
+  auto-rotate
+  camera-controls
+  style="width: 100vw; height: 100vh;">
 </model-viewer>
 
 <!-- <div #rendererContainer style="width: 100%; height: 500px;"></div> -->
