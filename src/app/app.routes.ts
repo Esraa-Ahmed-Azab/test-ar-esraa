@@ -3,7 +3,7 @@ import { QrCodeComponent } from './qr-code/qr-code.component';
 import { ArViewerComponent } from './ar-viewer/ar-viewer.component';
 
 const routes: Routes = [
-    { path: '', component: QrCodeComponent }, 
+    { path: '', component: ArViewerComponent }, 
     { path: 'ar-viewer', component: ArViewerComponent },
     { path: '**', redirectTo: '' }
 ];
