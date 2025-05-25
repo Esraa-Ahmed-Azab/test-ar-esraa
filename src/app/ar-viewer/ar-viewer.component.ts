@@ -19,6 +19,10 @@ export class ArViewerComponent {
 
   private mixer!: THREE.AnimationMixer;
   private clock = new THREE.Clock();
+// https://test-ar-esraa.vercel.app/assets/Smartphone_Display_0517224312_texture.glb
+
+ androidModelUrl = 'https://test-ar-esraa.vercel.app/assets/Smartphone_Display_0517224312_texture.glb'; // Must be HTTPS and public
+  iosModelUrl = 'https://test-ar-esraa.vercel.app/assets/Smartphone_Display_0521123212_texture.usdz';   // Must be HTTPS and public
 
   modelUrl = '';
   iosUrl='';
@@ -30,12 +34,31 @@ export class ArViewerComponent {
     });
   }
 
-  openAR() {
-    const glbUrl = encodeURIComponent('https://test-ar-esraa.vercel.app/assets/Smartphone_Display_0517224312_texture.glb'); // Must be public HTTPS
-  const title = encodeURIComponent('My AR Model');
+   launchAR() {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    const isAndroid = userAgent.includes('android');
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-  const sceneViewerUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${glbUrl}&mode=ar_preferred&title=${title}#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${glbUrl};end;`;
+    if (isAndroid) {
+      this.launchSceneViewer();
+    } else if (isIOS) {
+      this.launchQuickLook();
+    } else {
+      alert('AR is only supported on mobile devices.');
+    }
+  }
 
-  window.location.href = sceneViewerUrl;
+   launchSceneViewer() {
+    const modelUrl = encodeURIComponent(this.androidModelUrl);
+    const sceneViewerUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${modelUrl}&mode=ar_preferred&resizable=false#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;end;`;
+
+    window.location.href = sceneViewerUrl;
+  }
+
+  launchQuickLook() {
+    const anchor = document.createElement('a');
+    anchor.setAttribute('rel', 'ar');
+    anchor.setAttribute('href', this.iosModelUrl);
+    anchor.click();
   }
 }
