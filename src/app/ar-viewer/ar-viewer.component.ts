@@ -23,9 +23,9 @@ export class ArViewerComponent {
 
  androidModelUrl = 'https://test-ar-esraa.vercel.app/assets/Smartphone_Display_0517224312_texture.glb'; // Must be HTTPS and public
   iosModelUrl = 'https://test-ar-esraa.vercel.app/assets/Smartphone_Display_0521123212_texture.usdz';   // Must be HTTPS and public
-
   modelUrl = '';
   iosUrl='';
+  showIos= false;
   constructor(private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       this.modelUrl = '../../assets/Smartphone_Display_0517224312_texture.glb';
@@ -40,10 +40,13 @@ export class ArViewerComponent {
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
     if (isAndroid) {
+      this.showIos = false;
       this.launchSceneViewer();
     } else if (isIOS) {
+      this.showIos = true;
       this.launchQuickLook();
     } else {
+      this.showIos = false;
       alert('AR is only supported on mobile devices.');
     }
   }
