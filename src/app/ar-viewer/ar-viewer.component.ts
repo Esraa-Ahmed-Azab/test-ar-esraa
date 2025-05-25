@@ -46,7 +46,7 @@ export class ArViewerComponent {
       this.showIos = true;
      // this.launchQuickLook();
     } else {
-      this.showIos = false;
+      this.showIos = true;
       alert('AR is only supported on mobile devices.');
     }
   }
