@@ -44,7 +44,7 @@ export class ArViewerComponent {
       this.launchSceneViewer();
     } else if (isIOS) {
       this.showIos = true;
-      this.launchQuickLook();
+     // this.launchQuickLook();
     } else {
       this.showIos = true;
       alert('AR is only supported on mobile devices.');
@@ -58,21 +58,10 @@ export class ArViewerComponent {
     window.location.href = sceneViewerUrl;
   }
 
-  launchQuickLook() {
-    // const anchor = document.createElement('a');
-    // anchor.setAttribute('rel', 'ar');
-    // anchor.setAttribute('href', this.iosModelUrl);
-    // anchor.style.display = 'none'; // Optional: keep it hidden
-    // document.body.appendChild(anchor);
-    // anchor.click();
-    // document.body.removeChild(anchor); // Clean up
-
-    const anchor = document.createElement('a');
-    anchor.setAttribute('rel', 'ar');
-    anchor.setAttribute('href', this.iosModelUrl);
-    anchor.setAttribute('download', ''); // optional: avoids file preview mode fallback
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
-  }
+  // launchQuickLook() {
+  //   const anchor = document.createElement('a');
+  //   anchor.setAttribute('rel', 'ar');
+  //   anchor.setAttribute('href', this.iosModelUrl);
+  //   anchor.click();
+  // }
 }
