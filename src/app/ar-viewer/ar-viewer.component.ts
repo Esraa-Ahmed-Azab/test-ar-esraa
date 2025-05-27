@@ -59,12 +59,20 @@ export class ArViewerComponent {
   }
 
   launchQuickLook() {
+    // const anchor = document.createElement('a');
+    // anchor.setAttribute('rel', 'ar');
+    // anchor.setAttribute('href', this.iosModelUrl);
+    // anchor.style.display = 'none'; // Optional: keep it hidden
+    // document.body.appendChild(anchor);
+    // anchor.click();
+    // document.body.removeChild(anchor); // Clean up
+
     const anchor = document.createElement('a');
     anchor.setAttribute('rel', 'ar');
     anchor.setAttribute('href', this.iosModelUrl);
-    anchor.style.display = 'none'; // Optional: keep it hidden
+    anchor.setAttribute('download', ''); // optional: avoids file preview mode fallback
     document.body.appendChild(anchor);
     anchor.click();
-    document.body.removeChild(anchor); // Clean up
+    document.body.removeChild(anchor);
   }
 }
