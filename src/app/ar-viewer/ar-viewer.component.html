@@ -7,7 +7,7 @@
   camera-controls
   style="width: 80%; height: 80vh;">
 </model-viewer> -->
-@if(showIos){
+<!-- @if(showIos){
 <model-viewer
   src="{{ modelUrl }}"
   ios-src="{{ iosUrl }}"
@@ -24,7 +24,11 @@
   🕶️ Display AR Model
 </button>
 </div>
-}
-
+} -->
+<div class="container">
+<button (click)="launchAR()" style="padding: 1rem; font-size: 1.2rem;">
+  🕶️ Display AR Model
+</button>
+</div>
 <!-- <div #rendererContainer style="width: 100%; height: 500px;"></div> -->
 <!-- <div id="ar-container"></div> -->
