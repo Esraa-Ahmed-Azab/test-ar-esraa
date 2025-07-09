@@ -21,15 +21,16 @@ export class ArViewerComponent {
   private clock = new THREE.Clock();
 // https://test-ar-esraa.vercel.app/assets/Smartphone_Display_0517224312_texture.glb
 
- androidModelUrl = 'https://test-ar-esraa.vercel.app/assets/Smartphone_Display_0517224312_texture.glb'; // Must be HTTPS and public
-  iosModelUrl = 'https://test-ar-esraa.vercel.app/assets/Smartphone_Display_0521123212_texture.usdz';   // Must be HTTPS and public
+ androidModelUrl = 'https://test-ar-esraa.vercel.app/assets/iphone_16_pro_max.glb'; // Must be HTTPS and public
+  iosModelUrl = 'https://test-ar-esraa.vercel.app/assets/iPhone_16_Pro_Max.usdz';   // Must be HTTPS and public
+
   modelUrl = '';
   iosUrl='';
   showIos= false;
   constructor(private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
-      this.modelUrl = '../../assets/Smartphone_Display_0517224312_texture.glb';
-      this.iosUrl = '../../assets/Smartphone_Display_0521123212_texture.usdz';
+      this.modelUrl = '../../assets/iphone_16_pro_max.glb';
+      this.iosUrl = '../../assets/iPhone_16_Pro_Max.usdz';
 
     });
   }
